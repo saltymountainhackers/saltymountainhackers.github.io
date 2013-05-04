@@ -9,7 +9,7 @@ ssh_port       = "22"
 document_root  = "~/website.com/"
 rsync_delete   = false
 rsync_args     = ""  # Any extra arguments to pass to rsync
-deploy_default = "push"
+deploy_default = "push_source"
 
 # This will be configured for you when you run config_deploy
 deploy_branch  = "master"
@@ -261,6 +261,20 @@ multitask :push do
     system "git push origin #{deploy_branch} --force"
     puts "\n## Github Pages deploy complete"
   end
+end
+
+desc "commit source changes to github"
+multitask :push_source do
+  puts "## Commiting source to github"
+  system "git add ."
+  system "git add -u"
+  puts "\n## Commiting: Site source updated at #{Time.now.utc}"
+  message = "Site source updated at #{Time.now.utc}"
+  system "git commit -m \"#{message}\""
+  puts "\n## Pushing source"
+  system "git push origin source --force"
+  puts "\n## Github Pages source update complete"
+  Rake::Task[:push].invoke()
 end
 
 desc "Update configurations to support publishing to root or sub directory"
