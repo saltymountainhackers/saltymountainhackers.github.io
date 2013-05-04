@@ -57,14 +57,10 @@ Edit the post using [Markdown](http://octopress.org/docs/blogging/) and then do
 rake deploy
 ```
 
-to deploy to the master branch. To check in the source branch.
-
-```
-git push
-```
+and this will commit the source and the master branches in one command.
 
 If you don't have commit rights yet then fork the repo and send me a pull request on
-the source branch.
+the source branch and I will regenerate.
 
 #### Why the high barrier to committing content.
 
