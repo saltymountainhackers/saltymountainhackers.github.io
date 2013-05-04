@@ -1,2 +1,26 @@
 // This File is imported last, and will override other styles in the cascade
 // Add styles here to make changes without digging in too much
+@mixin background($imgpath,$position:0 0,$repeat: no-repeat) {
+    background: {
+        image: url($imgpath);
+        position: $position;
+        repeat: $repeat;
+    }
+}
+
+header[role=banner] {
+  @include background('/images/salty-mountain.jpg');
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  h1 {
+    color:green;
+    a:visited, a {
+      color: $solar-blue;
+    }
+  }
+  h2 {
+    color: $solar-violet;
+  }
+}
